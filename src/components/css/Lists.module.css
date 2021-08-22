@@ -1,5 +1,24 @@
 .listsbox{
     margin:auto;
     padding:100px;
+    background:rgb(62, 63, 63);
+    height:100vh;
+    color:white;
+    animation: fadein 1s ease-in-out;
     
+    
+}
+@media (max-width:650px){
+    .listsbox{
+        padding:20px;
+    }
+}
+@keyframes fadein{
+
+    0%{
+        opacity:0
+    }
+    100%{
+opacity: 1;
+    }
 }

@@ -4,9 +4,14 @@
     border: 5px solid white;
     border-radius:10%;
     min-width:100px;
-    display: block;
+    min-height:100px;
+    display: flex;
     padding:8px;
     margin: 10px;
+    flex-wrap:wrap;
+    word-wrap: break-word;
+white-space: pre-wrap;
+word-break: break-word;
 
     
 }
@@ -18,4 +23,17 @@
     border-radius: 20px;
     transition: 1s;
     padding:30px;
+    color:rgb(34, 33, 33);
+}
+.result>h1{
+    color:rgb(34, 33, 33);
+
+}
+@media (max-width:650px){
+    .result{
+        width:90vw;
+        min-height:40vh;
+
+        
+    }
 }
