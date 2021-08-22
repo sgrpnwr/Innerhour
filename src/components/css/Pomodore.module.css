@@ -48,7 +48,7 @@
     font-weight:bold;
     margin-top:50px;
     animation: comefromleft 2s;
-
+    position: relative;
 }
 .dropdown{
     width:100px;
@@ -61,6 +61,10 @@
     border-radius:10%;
     
     font-size: 2rem;
+}
+.cycleno{
+    position: absolute;
+    bottom:10px;
 }
 .cyclebox{
     display: flex;
@@ -76,7 +80,7 @@
 }
 .startstop{
     min-width:40%;
-    min-height:30%;
+    min-height:50%;
     font-size:2rem;
     background-color: rgb(241, 78, 78);
     border: 2px solid white;
@@ -102,7 +106,7 @@
     }
     .dropdown{
         margin-top:10px;
-        height:70px;
+        height:100px;
         width:150px;
     }
 }

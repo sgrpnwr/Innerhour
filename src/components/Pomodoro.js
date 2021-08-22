@@ -84,15 +84,7 @@ function Pomodoro() {
 
   return (
     <div className={style.clockbox}>
-    <div>
-        {!breakMessage && (
-          <div>
-            <h5 className={style.subtext}>
-              (Cycle number:{Math.floor(cycleno / 2) + 1})
-            </h5>
-          </div>
-        )}
-      </div>
+    
       <div className={`${style.message}`}>
         {breakMessage && isNotEnded && <div>Have some rest!</div>}
         {!isNotEnded && <div>Fin!</div>}
@@ -106,7 +98,17 @@ function Pomodoro() {
         <div className={style.timer}>
           {timerMinutes}:{timerSeconds}
         </div>
+        <div className={style.cycleno}>
+        {!breakMessage && (
+          <div>
+            <h5 className={style.subtext}>
+              (Cycle number:{Math.floor(cycleno / 2) + 1})
+            </h5>
+          </div>
+        )}
       </div>
+      </div>
+      
       <div className={style.buttonsdiv}>
         <button className={style.startstop} onClick={startButtonHandler}>
           {button}
