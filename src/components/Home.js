@@ -6,7 +6,7 @@ function Home() {
   return (
     <div className={style.homebox}>
     <h1 className={style.typing}>Hey Recruiter :)</h1>
-    <h1 >Please find my submission below</h1>
+    <h1>Please find my submission below</h1>
       <Link style={{ textDecoration: "none" }} to="/lists">
         <button className={style.assignment}>Lists</button>
       </Link>
