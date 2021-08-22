@@ -84,14 +84,7 @@ function Pomodoro() {
 
   return (
     <div className={style.clockbox}>
-      <div className={`${style.message}`}>
-        {breakMessage && isNotEnded && <div>Have some rest!</div>}
-        {!isNotEnded && <div>Fin!</div>}
-      </div>
-      <div className={`${style.message}`}>
-        {!breakMessage && <div>Let's do some work!</div>}
-      </div>
-      <div>
+    <div>
         {!breakMessage && (
           <div>
             <h5 className={style.subtext}>
@@ -100,6 +93,14 @@ function Pomodoro() {
           </div>
         )}
       </div>
+      <div className={`${style.message}`}>
+        {breakMessage && isNotEnded && <div>Have some rest!</div>}
+        {!isNotEnded && <div>Fin!</div>}
+      </div>
+      <div className={`${style.message}`}>
+        {!breakMessage && <div>Let's do some work!</div>}
+      </div>
+      
 
       <div className={`${style.worktime} ${style.box}`}>
         <div className={style.timer}>
