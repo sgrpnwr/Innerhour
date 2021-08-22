@@ -12,53 +12,85 @@ function Form() {
   const [isSubmitted, setSubmitted] = useState(false);
 
   const List1Changehandler = (e) => {
-    console.log(e.target.value);
     setList1(e.target.value);
   };
   const List2Changehandler = (e) => {
-    console.log(e.target.value);
     setList2(e.target.value);
   };
   const onlyinList = (A, B) => {
+    if (A[0] === ",") {
+      A = A.substring(1);
+    }
+
+    if (A[A.length - 1] === ",") {
+      A = A.substring(0, A.length - 1);
+    }
+    if (B[0] === ",") {
+        B = B.substring(1);
+      }
+  
+      if (B[B.length - 1] === ",") {
+        B = B.substring(0, B.length - 1);
+      }
     return A.split(",")
       .map((item) => item.trim())
+      .map((item) => item.toLowerCase())
       .concat(B.split(",").map((item) => item.trim()))
+      .map((item) => item.toLowerCase())
       .filter((item) => {
         return !B.split(",")
           .map((item) => item.trim())
+          .map((item) => item.toLowerCase())
           .includes(item);
       });
   };
   const commoninlist = (A, B) => {
+    // if (A[0] === ",") {
+    //     A = A.substring(1);
+    //   }
+  
+    //   if (A[A.length - 1] === ",") {
+    //     A = A.substring(0, A.length - 1);
+    //   }
+    //   if (B[0] === ",") {
+    //       B = B.substring(1);
+    //     }
+    
+    //     if (B[B.length - 1] === ",") {
+    //       B = B.substring(0, B.length - 1);
+    //     }
     return A.split(",")
       .map((item) => item.trim())
+      .map((item) => item.toLowerCase())
       .filter((item) => {
         return B.split(",")
           .map((item) => item.trim())
+          .map((item) => item.toLowerCase())
           .includes(item);
       });
   };
-  console.log([...new Set(commoninlist(list1, list2))]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-
-    setV2([...new Set(onlyinList(list2, list1))]);
-    setV1([...new Set(onlyinList(list1, list2))]);
-    setV3(
-      [
-        ...new Set(
-          list1
-            .split(",")
-            .map((item) => item.trim())
-            .concat(list2.split(",").map((item) => item.trim()))
-        ),
-      ].map((item) => item.trim())
-    );
+    setV1([...new Set(onlyinList(list1, list2))].filter(item=>item!==""));
+    setV2([...new Set(onlyinList(list2, list1))].filter(item=>item!==""));
+    
+    setV3([
+      ...new Set(
+          
+        list1
+          .split(",")
+          .map((item) => item.trim())
+          .map((item) => item.toLowerCase())
+          .concat(list2.split(",").map((item) => item.trim()))
+          .map((item) => item.toLowerCase())
+      ),
+    ].filter(item=>item!==""));
     setSubmitted(true);
-    setV4([...new Set(commoninlist(list1, list2))]);
+    setV4([...new Set(commoninlist(list1, list2))].filter(item=>item!==""));
   };
-
+  console.log(V1, V2, V3, V4);
+  console.log(V1.map((item) => item.toLowerCase()));
   return (
     <div className={style.myform}>
       <form onSubmit={submitHandler}>
@@ -92,11 +124,12 @@ function Form() {
           Compute
         </button>
         <span className={style.note}>
-          Note: All white spaces will be eliminated
+          Note: 1.All white spaces will be eliminated. 2.Input field is case
+          insensitive.
         </span>
       </form>
       <hr></hr>
-      <Result V1={V1} V2={V2} V3={V3} V4={V4} isSubmitted={isSubmitted}/>
+      <Result V1={V1} V2={V2} V3={V3} V4={V4} isSubmitted={isSubmitted} />
     </div>
   );
 }

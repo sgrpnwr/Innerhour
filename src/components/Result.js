@@ -28,7 +28,7 @@ function Result({isSubmitted,V1,V2,V3,V4}) {
 
         {isSubmitted && (
           <h3>
-            Items combining both A and B (unique and sorted):
+            Items combining both A and B (unique):
             {V3.length > 0 ? (
               <span className={style.computation}>
                 {V3.sort((a, b) => a - b).join()}
